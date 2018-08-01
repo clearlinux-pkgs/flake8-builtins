@@ -1,0 +1,27 @@
+From bfbc523dbcc6d1945e4de8781056918251590fd8 Mon Sep 17 00:00:00 2001
+From: "Brett T. Warden" <brett.t.warden@intel.com>
+Date: Wed, 1 Aug 2018 12:03:40 -0700
+Subject: [PATCH] Fix test decorators to skip Python 2 tests
+
+---
+ run_tests.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/run_tests.py b/run_tests.py
+index d052c26..0d23bd0 100644
+--- a/run_tests.py
++++ b/run_tests.py
+@@ -275,6 +275,10 @@ class TestBuiltins(unittest.TestCase):
+         sys.version_info > (3, 0),
+         reason='This syntax is only valid in Python 2.x',
+     )
++    @unittest.skipIf(
++        sys.version_info > (3, 0),
++        reason='This syntax is only valid in Python 2.x',
++    )
+     def test_exception_py2(self):
+         tree = ast.parse(
+             'try:\n'
+-- 
+2.18.0
+
