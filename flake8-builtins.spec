@@ -4,7 +4,7 @@
 #
 Name     : flake8-builtins
 Version  : 1.4.1
-Release  : 2
+Release  : 3
 URL      : https://files.pythonhosted.org/packages/8e/dd/9b7a1d5e8b455c5029998ae6ad2fba1351b71e635b9cac2f4d86cb2ab629/flake8-builtins-1.4.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/8e/dd/9b7a1d5e8b455c5029998ae6ad2fba1351b71e635b9cac2f4d86cb2ab629/flake8-builtins-1.4.1.tar.gz
 Summary  : Check for python builtins being used as variables or parameters.
@@ -13,13 +13,11 @@ License  : GPL-2.0
 Requires: flake8-builtins-license = %{version}-%{release}
 Requires: flake8-builtins-python = %{version}-%{release}
 Requires: flake8-builtins-python3 = %{version}-%{release}
-Requires: configparser
 Requires: flake8
 Requires: mccabe
 Requires: pycodestyle
 Requires: pyflakes
 BuildRequires : buildreq-distutils3
-BuildRequires : configparser
 BuildRequires : flake8
 BuildRequires : mccabe
 BuildRequires : pycodestyle
@@ -60,6 +58,7 @@ python3 components for the flake8-builtins package.
 
 %prep
 %setup -q -n flake8-builtins-1.4.1
+cd %{_builddir}/flake8-builtins-1.4.1
 %patch1 -p1
 
 %build
@@ -67,7 +66,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571078813
+export SOURCE_DATE_EPOCH=1573847551
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -80,7 +79,7 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
