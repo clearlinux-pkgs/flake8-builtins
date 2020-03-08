@@ -4,7 +4,7 @@
 #
 Name     : flake8-builtins
 Version  : 1.4.1
-Release  : 4
+Release  : 5
 URL      : https://files.pythonhosted.org/packages/8e/dd/9b7a1d5e8b455c5029998ae6ad2fba1351b71e635b9cac2f4d86cb2ab629/flake8-builtins-1.4.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/8e/dd/9b7a1d5e8b455c5029998ae6ad2fba1351b71e635b9cac2f4d86cb2ab629/flake8-builtins-1.4.1.tar.gz
 Summary  : Check for python builtins being used as variables or parameters.
@@ -51,6 +51,8 @@ python components for the flake8-builtins package.
 Summary: python3 components for the flake8-builtins package.
 Group: Default
 Requires: python3-core
+Provides: pypi(flake8_builtins)
+Requires: pypi(flake8)
 
 %description python3
 python3 components for the flake8-builtins package.
@@ -66,7 +68,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573847551
+export SOURCE_DATE_EPOCH=1583703056
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
